@@ -1,14 +1,9 @@
 // TASK: import helper functions from utils
-import{getTasks, 
-  saveTasks, 
-  createNewTasks,
-   patchTask,
-    putTask,
-     deleteTask} from './utils/taskFunctions.js'
+import{getTasks, saveTasks, createNewTask, patchTask, putTask, deleteTask} from './utils/taskFunctions.js'
 
 
 // TASK: import initialData
-
+ import {initialData} from './initialData.js'
 
 /*************************************************************************************************************************************************
  * FIX BUGS!!!
@@ -26,7 +21,15 @@ function initializeData() {
 
 // TASK: Get elements from the DOM
 const elements = {
-
+filterDiv: document.getElementById('filterDiv'),
+hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
+showSideBarBtn: document.getElementById('show-side-bar-btn'),
+themeSwitch: document.getElementById('switch'),
+createNewTaskBtn: document.getElementById('add-new-task-btn'),
+modalWindow: document.getElementById('newTask-modal-window'),
+columnDivs: document.querySelectorAll('.column-div'),
+headerBoardName: document.getElementById('header-board-name'),
+editTaskModal: document.getElementsByClassName('edit-task-modal-window')[0]
 }
 
 let activeBoard = ""
