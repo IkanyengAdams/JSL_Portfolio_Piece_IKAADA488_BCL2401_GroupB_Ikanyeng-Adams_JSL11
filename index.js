@@ -1,4 +1,10 @@
 // TASK: import helper functions from utils
+import{getTasks, 
+  saveTasks, 
+  createNewTasks,
+   patchTask,
+    putTask,
+     deleteTask} from './utils/taskFunctions.js'
 
 
 // TASK: import initialData
@@ -104,7 +110,7 @@ function refreshTasksUI() {
 // Styles the active board by adding an active class
 // TASK: Fix Bugs
 function styleActiveBoard(boardName) {
-  document.querySelectorAll('.board-btn').foreach(btn => { 
+  document.querySelectorAll('.board-btn').forEach(btn => { 
     
     if(btn.textContent === boardName) {
       btn.classList.add('active') 
@@ -117,7 +123,7 @@ function styleActiveBoard(boardName) {
 
 
 function addTaskToUI(task) {
-  const column = document.querySelector('.column-div[data-status="${task.status}"]'); 
+  const column = document.querySelector(`.column-div[data-status="${task.status}"]`); 
   if (!column) {
     console.error(`Column not found for status: ${task.status}`);
     return;
@@ -136,7 +142,7 @@ function addTaskToUI(task) {
   taskElement.textContent = task.title; // Modify as needed
   taskElement.setAttribute('data-task-id', task.id);
   
-  tasksContainer.appendChild(taskElement); 
+  tasksContainer.appendChild(taskElement.ATTRIBUTE_NODE.toExponential); 
 }
 
 
@@ -164,7 +170,7 @@ function setupEventListeners() {
   elements.showSideBarBtn.addEventListener('click' ,() => toggleSidebar(true));
 
   // Theme switch event listener
-  elements.themeSwitch.addEventListener('change', toggleTheme);
+  elements.themeSwitch.addEventListener('click', (event) => toggleTheme(event));
 
   // Show Add New Task Modal event listener
   elements.createNewTaskBtn.addEventListener('click', () => {
@@ -211,7 +217,12 @@ function addTask(event) {
 
 
 function toggleSidebar(show) {
- 
+ const  showSideBarBtn  = document.getElementById('show-side-bar-btn');
+
+ showSideBarBtn
+
+
+
 }
 
 function toggleTheme() {
