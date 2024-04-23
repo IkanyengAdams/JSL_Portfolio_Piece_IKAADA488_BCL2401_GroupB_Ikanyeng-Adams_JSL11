@@ -26,7 +26,7 @@ hideSideBarBtn: document.getElementById('hide-side-bar-btn'),
 showSideBarBtn: document.getElementById('show-side-bar-btn'),
 themeSwitch: document.getElementById('switch'),
 createNewTaskBtn: document.getElementById('add-new-task-btn'),
-modalWindow: document.getElementById('newTask-modal-window'),
+modalWindow: document.getElementById('new-task-modal-window'),
 columnDivs: document.querySelectorAll('.column-div'),
 headerBoardName: document.getElementById('header-board-name'),
 editTaskModal: document.getElementsByClassName('edit-task-modal-window')[0]
@@ -222,15 +222,30 @@ function addTask(event) {
 function toggleSidebar(show) {
  const  showSideBarBtn  = document.getElementById('show-side-bar-btn');
 
- showSideBarBtn
+ showSideBarBtn.addEventListener('click', () => {
+   const sideBar = document.getElementById('side-bar-div');
+   sideBar.style.display = show ? 'block' : 'none';
+   showSideBarBtn.style.display = show? 'none' : 'block';
+ });
+
+ const hideSideBarBtn = document.getElementById('hide-side-bar-btn');
+
+ hideSideBarBtn.addEventListener('click', () => {
+  const sideBar = document.getElementById('side-bar-div');
+  sideBar.style.display = show ? 'block' : 'none';
+  showSideBarBtn.style.display = show ? 'none' : 'block';
+ });
 
 
 
 }
 
-function toggleTheme() {
- 
+function toggleTheme(show) {
+ const isLightTheme = show === 'enabled' || show === true || elements.themeSwitch.checked === true;
+ document.body.classlist.toggle('light-theme', isLightTheme);
+ localStorage.setItem('light-theme', (isLightTheme ? 'enable' : 'disabled'));
 }
+
 
 
 
