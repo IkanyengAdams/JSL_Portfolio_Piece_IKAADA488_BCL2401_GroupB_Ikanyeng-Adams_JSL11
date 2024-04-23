@@ -1,5 +1,6 @@
 // TASK: import helper functions from utils
 
+
 // TASK: import initialData
 
 
@@ -86,7 +87,7 @@ function filterAndDisplayTasksByBoard(boardName) {
       taskElement.setAttribute('data-task-id', task.id);
 
       // Listen for a click event on each task and open a modal
-      taskElement.addEventListener('click'() => { 
+      taskElement.addEventListener('click', () => { 
         openEditTaskModal(task);
       });
 
@@ -192,6 +193,10 @@ function addTask(event) {
 
   //Assign user input to the task object
     const task = {
+    title: elements.titleInput.value,
+    description: elements.descInput.value,
+    status: elements.selectStatus.value,
+    board: activeBoard,
       
     };
     const newTask = createNewTask(task);
