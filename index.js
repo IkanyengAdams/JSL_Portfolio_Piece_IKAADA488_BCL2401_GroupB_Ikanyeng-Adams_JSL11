@@ -259,20 +259,25 @@ function openEditTaskModal(task) {
  editSelectStatus = document.getElementById("edit-select-status");
 
  editTaskTitleInput.value = task.title;
- editTaskTitleInput.value = task.description;
+ editTaskDescInput.value = task.description;
  const SelectStatus = editSelectStatus.querySelector(`Option[value = "${task.status}"]`);
- SelectStatus.selcted = true;
+ SelectStatus.selected = true;
  
-
-  // Get button elements from the task modal
-  const saveTasksBtn = document.getElementById('save-tasks-changes-btn'),
-  deleteTaskBtn = document.getElementById('delete-task-btn');
-
-  // Call saveTaskChanges upon click of Save Changes button
-saveTasksBtn.addEventListener('click', () => {saveTaskChanges(task.id);});
-  // Delete task using a helper function and close the task modal
-
+ 
   toggleModal(true, elements.editTaskModal); // Show the edit task modal
+
+   // Get button elements from the task modal
+   const saveTaskBtn = document.getElementById('save-tasks-changes-btn'),
+   deleteTaskBtn = document.getElementById('delete-task-btn');
+ 
+   // Call saveTaskChanges upon click of Save Changes button
+ saveTaskBtn.addEventListener('click', () => {saveTaskChanges(task.id);});
+   // Delete task using a helper function and close the task modal
+  deleteTaskBtn.addEventListener('click', () => {
+   deleteTask(task.id);
+   toggleModal(false, elements.editTaskModal);
+   refreshTasksUI();
+  });
 }
 
 function saveTaskChanges(taskId) {
@@ -290,7 +295,7 @@ function saveTaskChanges(taskId) {
   // Update task using a hlper functoin
   putTask(task);
   // Close the modal and refresh the UI to reflect the changes
-
+ toggleModal(false, elements.editTaskModal);
   refreshTasksUI();
 }
 
