@@ -215,7 +215,11 @@ function addTask(event) {
     description: document.getElementById("desc-input").value,
     status: document.getElementById("select-status").value,
     board: activeBoard,
-  };
+  }
+  if(task.title.trim() === "" || task.description.trim() === "" || task.status.trim () === ""){
+    alert('Fill in the missing fields')
+    return;
+  }
   const newTask = createNewTask(task);
   if (newTask) {
     addTaskToUI(newTask);
