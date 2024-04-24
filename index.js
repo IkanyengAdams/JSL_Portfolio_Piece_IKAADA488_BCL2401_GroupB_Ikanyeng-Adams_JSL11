@@ -181,7 +181,7 @@ function setupEventListeners() {
   elements.showSideBarBtn.addEventListener("click", () => toggleSidebar(true));
 
   // Theme switch event listener
-  elements.themeSwitch.addEventListener("change", () => toggleTheme());
+  elements.themeSwitch.addEventListener("change", (event) => toggleTheme(event));
 
   // Show Add New Task Modal event listener
   elements.createNewTaskBtn.addEventListener("click", () => {
@@ -247,9 +247,9 @@ function toggleTheme(show) {
   const isLightTheme =
     show === "enabled" ||
     show === true ||
-    elements.themeSwitch.checked === isLightTheme;
-  document.body.classlist.toggle("light-theme", isLightTheme);
-  localStorage.setItem("light-theme", isLightTheme ? "enabled" : "disabled");
+    elements.themeSwitch.checked === true;
+  document.body.classList.toggle("light-theme", isLightTheme);
+  localStorage.setItem("light-theme", (isLightTheme ? "enabled" : "disabled"));
 }
 
 function openEditTaskModal(task) {
@@ -304,9 +304,9 @@ function init() {
   initializeData();
   setupEventListeners();
   const showSidebar = localStorage.getItem("showSideBar") === "true";
-  elements.showSideBarBtn.style.display = showSidebar ? "block" : "none";
+  elements.showSideBarBtn.style.display = showSidebar ? 'block' : 'none';
   toggleSidebar(showSidebar);
-  const isLightTheme = localStorage.getItem("light-theme") === "enabled";
+  const isLightTheme = localStorage.getItem("light-theme") === 'enabled';
   document.body.classList.toggle("light-theme", isLightTheme);
   fetchAndDisplayBoardsAndTasks(); // Initial display of boards and tasks
 }
