@@ -35,10 +35,11 @@ const elements = {
   columnDivs: document.querySelectorAll(".column-div"),
   headerBoardName: document.getElementById("header-board-name"),
   editTaskModal: document.getElementsByClassName("edit-task-modal-window")[0],
+  logo: document.getElementById("logo"),
 };
 
 document.getElementById("boards-nav-links-div").style.marginTop = "50px";
-document.getElementById("boards-nav-links-div").style.marginBottom = "300px"
+document.getElementById("boards-nav-links-div").style.marginBottom = "300px";
 
 let activeBoard = "";
 
@@ -238,21 +239,11 @@ function addTask(event) {
 }
 
 function toggleSidebar(show) {
-  const showSideBarBtn = document.getElementById("show-side-bar-btn");
+  const sideBar = document.getElementById("side-bar-div");
 
-  showSideBarBtn.addEventListener("click", () => {
-    const sideBar = document.getElementById("side-bar-div");
-    sideBar.style.display = show ? "block" : "none";
-    showSideBarBtn.style.display = show ? "none" : "block";
-  });
-
-  const hideSideBarBtn = document.getElementById("hide-side-bar-btn");
-
-  hideSideBarBtn.addEventListener("click", () => {
-    const sideBar = document.getElementById("side-bar-div");
-    sideBar.style.display = show ? "block" : "none";
-    showSideBarBtn.style.display = show ? "none" : "block";
-  });
+  sideBar.style.display = show ? "block" : "none";
+  elements.showSideBarBtn.style.display = show ? "none" : "block";
+  localStorage.setItem("showSideBar", show);
 }
 
 function toggleTheme(show) {
@@ -261,6 +252,12 @@ function toggleTheme(show) {
     show === true ||
     elements.themeSwitch.checked === true;
   document.body.classList.toggle("light-theme", isLightTheme);
+  const loadedLogo = elements.logo.src.split("/").pop(),
+    getLogo = loadedLogo.replace(
+      isLightTheme ? "logo-dark.svg" : "logo-light.svg",
+      isLightTheme ? "logo-light.svg" : "logo-dark.svg"
+    );
+  elements.logo.src = elements.logo.src.replace(loadedLogo, getLogo);
   localStorage.setItem("light-theme", isLightTheme ? "enabled" : "disabled");
 }
 
