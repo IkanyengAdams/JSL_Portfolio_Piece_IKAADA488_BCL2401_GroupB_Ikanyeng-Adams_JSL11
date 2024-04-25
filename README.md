@@ -29,8 +29,8 @@ Creating a New Board: Click on the "+" button next to the boards to create a new
 Switching Boards: Click on a board name to switch to that board and view its tasks.
 Customizing Theme: Toggle the theme switch to switch between light and dark themes.
 
-
-
+Link to my loom video
+[Loom video](https://www.loom.com/share/3d9c23a21d344d38b688d9e744036c4a?sid=8bfd29d8-d2b7-4928-a9f1-a846a9c43e61)
 
 
 
