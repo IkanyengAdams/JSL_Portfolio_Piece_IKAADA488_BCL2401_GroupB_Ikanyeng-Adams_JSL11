@@ -37,6 +37,9 @@ const elements = {
   editTaskModal: document.getElementsByClassName("edit-task-modal-window")[0],
 };
 
+document.getElementById("boards-nav-links-div").style.marginTop = "50px";
+document.getElementById("boards-nav-links-div").style.marginBottom = "300px"
+
 let activeBoard = "";
 
 // Extracts unique board names from tasks
@@ -215,9 +218,13 @@ function addTask(event) {
     description: document.getElementById("desc-input").value,
     status: document.getElementById("select-status").value,
     board: activeBoard,
-  }
-  if(task.title.trim() === "" || task.description.trim() === "" || task.status.trim () === ""){
-    alert('Fill in the missing fields')
+  };
+  if (
+    task.title.trim() === "" ||
+    task.description.trim() === "" ||
+    task.status.trim() === ""
+  ) {
+    alert("Fill in the missing fields");
     return;
   }
   const newTask = createNewTask(task);
@@ -327,6 +334,8 @@ function init() {
   elements.showSideBarBtn.style.display = showSidebar ? "block" : "none";
   toggleSidebar(showSidebar);
   const isLightTheme = localStorage.getItem("light-theme") === "enabled";
+  toggleTheme(isLightTheme);
+  elements.themeSwitch.checked = isLightTheme;
   document.body.classList.toggle("light-theme", isLightTheme);
   fetchAndDisplayBoardsAndTasks(); // Initial display of boards and tasks
 }
